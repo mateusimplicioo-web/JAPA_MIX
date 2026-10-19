@@ -1,0 +1,1729 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title> JAPAMIX </title>
+
+<style>
+:root {
+    --vermelho: #F00000;
+    --vermelho-escuro: #C90000;
+    --fundo: #F7F7F7;
+    --branco: #FFFFFF;
+    --texto: #292929;
+    --cinza: #777777;
+    --verde: #08A85B;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 150px;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--fundo);
+    color: var(--texto);
+}
+
+/* CABEÇALHO PRINCIPAL */
+
+.topo {
+    background: var(--vermelho);
+    color: white;
+    padding: 18px 5%;
+}
+
+.topo-principal {
+    max-width: 1450px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 210px minmax(200px, 1fr) 100px;
+    align-items: center;
+    gap: 30px;
+}
+
+.logo {
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-size: 32px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+.logo span {
+    color: #ffe1a6;
+}
+
+/* PESQUISA */
+
+.busca {
+    display: flex;
+    background: white;
+    border-radius: 5px;
+    overflow: hidden;
+    height: 48px;
+    box-shadow: 0 2px 5px #00000012;
+}
+
+.busca input {
+    flex: 1;
+    width: 100%;
+    min-width: 0;
+    border: none;
+    outline: none;
+    padding: 0 15px;
+    font-size: 15px;
+    margin: 0;
+}
+
+.busca button {
+    border: none;
+    background: #f3f3f3;
+    color: var(--vermelho);
+    padding: 0 22px;
+    cursor: pointer;
+    font-size: 23px;
+}
+
+.busca button:hover {
+    background: #e8e8e8;
+}
+
+/* CARRINHO DO CABEÇALHO */
+
+.atalho-carrinho {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.icone-carrinho {
+    font-size: 31px;
+}
+
+.contador {
+    background: white;
+    color: var(--vermelho);
+    border-radius: 50%;
+    min-width: 23px;
+    height: 23px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+}
+
+/* MENU DE CATEGORIAS */
+
+.menu-categorias {
+    background: var(--vermelho);
+    color: white;
+    padding: 0 5% 15px;
+}
+
+.menu-interno {
+    max-width: 1450px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    overflow-x: auto;
+    scrollbar-width: thin;
+}
+
+.menu-interno a,
+.menu-interno button {
+    color: white;
+    background: transparent;
+    border: none;
+    text-decoration: none;
+    font-size: 14px;
+    white-space: nowrap;
+    cursor: pointer;
+    padding: 8px 0;
+    font-family: inherit;
+}
+
+.menu-interno a:hover,
+.menu-interno button:hover {
+    text-decoration: underline;
+}
+
+.menu-interno .ativo {
+    font-weight: bold;
+    border-bottom: 2px solid white;
+}
+
+/* LINK DO INSTAGRAM */
+
+.link-instagram {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    white-space: nowrap;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.link-instagram:hover {
+    opacity: 0.85;
+    transform: translateY(-2px);
+}
+
+.icone-instagram {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
+    border: 2px solid white;
+    border-radius: 8px;
+    font-size: 23px;
+    line-height: 1;
+    font-weight: bold;
+}
+
+/* CONTEÚDO */
+
+.container {
+    max-width: 1450px;
+    margin: auto;
+    padding: 22px 5%;
+}
+
+/* BANNER */
+
+.banner {
+    min-height: 240px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 28px;
+    padding: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    color: white;
+    background: linear-gradient(115deg, #FF0808, #D90000);
+    box-shadow: 0 3px 10px #00000012;
+}
+
+.banner-conteudo {
+    max-width: 650px;
+}
+
+.banner h1 {
+    font-size: clamp(28px, 4vw, 43px);
+    margin-bottom: 13px;
+}
+
+.banner p {
+    font-size: 17px;
+    line-height: 1.6;
+    margin-bottom: 22px;
+}
+
+.botao-banner {
+    display: inline-block;
+    background: white;
+    color: var(--vermelho);
+    text-decoration: none;
+    padding: 13px 23px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.banner-icone {
+    width: 220px;
+    max-width: 35%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.banner-icone img {
+    width: 100%;
+    max-height: 170px;
+    object-fit: contain;
+    display: block;
+}
+
+/* TÍTULOS */
+
+.titulo-secao {
+    font-size: 23px;
+    margin-bottom: 18px;
+}
+
+.subtitulo {
+    color: var(--cinza);
+    margin-top: -10px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+/* CATEGORIAS EM DESTAQUE */
+
+.categorias-destaque {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 35px;
+}
+
+.categoria-card {
+    background: white;
+    border: 1px solid #eeeeee;
+    border-radius: 8px;
+    min-height: 110px;
+    padding: 17px 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: .2s;
+    color: var(--texto);
+}
+
+.categoria-card:hover,
+.categoria-card.selecionada {
+    border-color: var(--vermelho);
+    transform: translateY(-2px);
+    box-shadow: 0 3px 10px #0000000c;
+}
+
+.categoria-card .emoji {
+    display: block;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.categoria-card span:last-child {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* VITRINE E CARRINHO */
+
+.layout-loja {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 290px;
+    gap: 24px;
+    align-items: start;
+}
+
+.vitrine {
+    min-width: 0;
+}
+
+.barra-vitrine {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.barra-vitrine h2 {
+    font-size: 23px;
+}
+
+.resultados {
+    color: var(--cinza);
+    font-size: 13px;
+}
+
+.produtos {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.produto {
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #eeeeee;
+    overflow: hidden;
+    transition: .2s;
+}
+
+.produto:hover {
+    box-shadow: 0 4px 15px #00000012;
+    transform: translateY(-2px);
+}
+
+.produto img {
+    display: block;
+    width: 100%;
+    height: 165px;
+    object-fit: contain;
+    background: #ffffff;
+    padding: 5px;
+}
+
+.produto-info {
+    padding: 13px;
+}
+
+.produto h3 {
+    font-size: 15px;
+    line-height: 1.4;
+    min-height: 40px;
+    margin-bottom: 8px;
+}
+
+.categoria-produto {
+    display: inline-block;
+    font-size: 11px;
+    color: #666;
+    background: #f2f2f2;
+    border-radius: 4px;
+    padding: 5px 7px;
+    margin-bottom: 10px;
+}
+
+.preco {
+    color: var(--vermelho);
+    font-size: 21px;
+    font-weight: bold;
+    margin-bottom: 13px;
+}
+
+.botao-adicionar {
+    width: 100%;
+    background: var(--vermelho);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 11px 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.botao-adicionar:hover {
+    background: var(--vermelho-escuro);
+}
+
+.sem-produtos {
+    background: white;
+    padding: 35px 15px;
+    border-radius: 8px;
+    text-align: center;
+    color: var(--cinza);
+    grid-column: 1 / -1;
+}
+
+/* CARRINHO LATERAL */
+
+.painel-carrinho {
+    background: white;
+    border: 1px solid #eeeeee;
+    border-radius: 8px;
+    padding: 18px;
+    position: sticky;
+    top: 15px;
+}
+
+.titulo-carrinho {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 20px;
+    margin-bottom: 18px;
+}
+
+.item-carrinho {
+    border-bottom: 1px solid #eeeeee;
+    padding: 12px 0;
+}
+
+.item-carrinho strong {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 7px;
+}
+
+.item-detalhes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+}
+
+.controles-qtd {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.controles-qtd button {
+    width: 27px;
+    height: 27px;
+    background: #f1f1f1;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+.remover {
+    color: var(--vermelho);
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-top: 8px;
+    font-size: 12px;
+}
+
+.carrinho-vazio {
+    font-size: 14px;
+    color: var(--cinza);
+    line-height: 1.6;
+    padding: 10px 0 20px;
+}
+
+.resumo-carrinho {
+    border-top: 1px solid #eeeeee;
+    padding-top: 15px;
+    margin-top: 12px;
+}
+
+.linha-total {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+.linha-total.final {
+    font-size: 19px;
+    font-weight: bold;
+    color: var(--vermelho);
+}
+
+.botao-finalizar {
+    width: 100%;
+    background: var(--verde);
+    color: white;
+    border: none;
+    padding: 13px 8px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+.botao-finalizar:hover {
+    background: #07864a;
+}
+
+.aviso-carrinho {
+    font-size: 11px;
+    color: var(--cinza);
+    line-height: 1.5;
+    margin-top: 10px;
+}
+
+/* FINALIZAÇÃO E ENTREGA */
+
+.forma-recebimento {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid #eeeeee;
+}
+
+.forma-recebimento h3 {
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+.campo-pedido {
+    margin-bottom: 12px;
+}
+
+.campo-pedido label {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.campo-pedido input,
+.campo-pedido select,
+.campo-pedido textarea {
+    width: 100%;
+    min-width: 0;
+    padding: 11px;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    background: white;
+    color: var(--texto);
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.campo-pedido input:focus,
+.campo-pedido select:focus,
+.campo-pedido textarea:focus {
+    outline: 2px solid #f0000033;
+    border-color: var(--vermelho);
+}
+
+.dados-entrega {
+    display: none;
+}
+
+.dados-entrega.visivel {
+    display: block;
+}
+
+.aviso-entrega {
+    background: #fff5f5;
+    color: #8f0000;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+.linha-total .valor-entrega {
+    color: var(--texto);
+}
+
+/* LOCALIZAÇÃO */
+
+.localizacao {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    margin-top: 35px;
+}
+
+.localizacao h2 {
+    margin-bottom: 12px;
+}
+
+.localizacao p {
+    line-height: 1.8;
+    margin-bottom: 18px;
+}
+
+.mapa {
+    width: 100%;
+    height: 380px;
+    border: 0;
+    border-radius: 8px;
+}
+
+.botao-mapa {
+    display: inline-block;
+    margin-top: 15px;
+    background: var(--vermelho);
+    color: white;
+    text-decoration: none;
+    padding: 12px 18px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* RODAPÉ */
+
+footer {
+    background: #292929;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 35px;
+}
+
+footer h2 {
+    margin-bottom: 8px;
+    letter-spacing: 2px;
+}
+
+footer p {
+    color: #dddddd;
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+/* TABLETS */
+
+@media (max-width: 1050px) {
+    .topo-principal {
+        grid-template-columns: 170px minmax(150px, 1fr) 85px;
+        gap: 16px;
+    }
+
+    .logo {
+        font-size: 27px;
+    }
+
+    .categorias-destaque {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .layout-loja {
+        grid-template-columns: minmax(0, 1fr) 260px;
+        gap: 15px;
+    }
+
+    .produtos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* CELULARES */
+
+@media (max-width: 650px) {
+    html {
+        scroll-padding-top: 155px;
+    }
+
+    .topo {
+        padding: 13px 4%;
+    }
+
+    .topo-principal {
+        grid-template-columns: 1fr auto;
+        gap: 13px;
+    }
+
+    .logo {
+        font-size: 27px;
+    }
+
+    .atalho-carrinho {
+        font-size: 0;
+        gap: 5px;
+    }
+
+    .icone-carrinho {
+        font-size: 28px;
+    }
+
+    .contador {
+        font-size: 11px;
+    }
+
+    .busca {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        height: 44px;
+    }
+
+    .busca input {
+        font-size: 14px;
+    }
+
+    .busca button {
+        padding: 0 17px;
+    }
+
+    .menu-categorias {
+        padding: 0 4% 10px;
+    }
+
+    .menu-interno {
+        gap: 21px;
+    }
+
+    .menu-interno a,
+    .menu-interno button {
+        font-size: 13px;
+    }
+
+    .container {
+        padding: 15px 4%;
+    }
+
+    .banner {
+        min-height: 210px;
+        padding: 23px 18px;
+    }
+
+    .banner h1 {
+        font-size: 27px;
+    }
+
+    .banner p {
+        font-size: 14px;
+    }
+
+    .banner-icone {
+        font-size: 55px;
+        padding: 0;
+    }
+
+    .categorias-destaque {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .categoria-card {
+        min-height: 95px;
+        padding: 12px 5px;
+    }
+
+    .categoria-card .emoji {
+        font-size: 26px;
+    }
+
+    .categoria-card span:last-child {
+        font-size: 12px;
+    }
+
+    .layout-loja {
+        grid-template-columns: 1fr;
+    }
+
+    .produtos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .produto img {
+        height: 135px;
+    }
+
+    .produto-info {
+        padding: 10px;
+    }
+
+    .produto h3 {
+        font-size: 13px;
+    }
+
+    .preco {
+        font-size: 19px;
+    }
+
+    .botao-adicionar {
+        font-size: 12px;
+        padding: 11px 5px;
+    }
+
+    .painel-carrinho {
+        position: static;
+        scroll-margin-top: 150px;
+    }
+
+    .mapa {
+        height: 300px;
+    }
+
+    .localizacao {
+        padding: 18px;
+    }
+}
+
+@media (max-width: 350px) {
+    .logo {
+        font-size: 23px;
+    }
+
+    .produtos {
+        grid-template-columns: 1fr;
+    }
+
+    .produto img {
+        height: 190px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- CABEÇALHO JAPAMIX -->
+
+<header class="topo" id="inicio">
+    <div class="topo-principal">
+
+        <a href="#inicio" class="logo">
+            JAPAMIX<span></span>
+        </a>
+
+        <form class="busca" id="form-busca">
+            <input
+                type="search"
+                id="search"
+                placeholder="Buscar produtos na JAPAMIX..."
+                aria-label="Buscar produtos"
+            >
+            <button type="submit" aria-label="Pesquisar">⌕</button>
+        </form>
+
+        <a href="#carrinho" class="atalho-carrinho">
+            <span class="icone-carrinho">🛒</span>
+            Carrinho
+            <span class="contador" id="cart-count">0</span>
+        </a>
+
+    </div>
+</header>
+
+<!-- ABAS DE NAVEGAÇÃO ABAIXO DA BUSCA -->
+
+<nav class="menu-categorias" aria-label="Categorias de produtos">
+    <div class="menu-interno" id="menu-categorias">
+
+        <button type="button" class="ativo"
+            onclick="filtrar('Todas')">Todas as categorias</button>
+
+        <button type="button"
+            onclick="filtrar('Papelaria')">Papelaria</button>
+
+        <button type="button"
+            onclick="filtrar('Brinquedos')">Brinquedos</button>
+
+        <button type="button"
+            onclick="filtrar('Casa')">Casa</button>
+
+        <button type="button"
+            onclick="filtrar('Limpeza')">Limpeza</button>
+
+        <button type="button"
+            onclick="filtrar('Higiene')">Higiene</button>
+
+        <button type="button"
+            onclick="filtrar('Utilidades')">Utilidades</button>
+
+        <button type="button"
+            onclick="filtrar('Acessórios')">Acessórios</button>
+
+        <a href="#localizacao">📍 Nossa loja</a>
+
+        <a
+    href="https://www.instagram.com/japamixpapelaria/"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="link-instagram"
+        >
+    <span class="icone-instagram">◎</span>
+    Instagram
+        </a>
+
+    </div>
+</nav>
+
+<main class="container">
+
+    <!-- BANNER PRINCIPAL -->
+
+    <section class="banner">
+        <div class="banner-conteudo">
+
+            <h1>Tudo o que você procura, em um só lugar!</h1>
+
+            <p>
+                Material escolar, brinquedos, produtos para casa,
+                limpeza, higiene e muito mais. Venha conhecer a JAPAMIX!
+            </p>
+
+            <a href="#produtos" class="botao-banner">
+                Explorar produtos
+            </a>
+
+        </div>
+
+        <div class="banner-icone">
+    <img src="Imagens/logo.png" alt="Logo JAPAMIX">
+</div>
+    </section>
+
+    <!-- CATEGORIAS VISUAIS -->
+
+    <section>
+        <h2 class="titulo-secao">Compre por categoria</h2>
+        <p class="subtitulo">Escolha uma categoria e encontre o que precisa.</p>
+
+        <div class="categorias-destaque">
+
+            <button class="categoria-card" onclick="filtrar('Papelaria')">
+                <span class="emoji">✏️</span>
+                <span>Papelaria</span>
+            </button>
+
+            <button class="categoria-card" onclick="filtrar('Brinquedos')">
+                <span class="emoji">🧸</span>
+                <span>Brinquedos</span>
+            </button>
+
+            <button class="categoria-card" onclick="filtrar('Casa')">
+                <span class="emoji">🏠</span>
+                <span>Casa</span>
+            </button>
+
+            <button class="categoria-card" onclick="filtrar('Limpeza')">
+                <span class="emoji">🧹</span>
+                <span>Limpeza</span>
+            </button>
+
+            <button class="categoria-card" onclick="filtrar('Higiene')">
+                <span class="emoji">🧼</span>
+                <span>Higiene</span>
+            </button>
+
+            <button class="categoria-card" onclick="filtrar('Utilidades')">
+                <span class="emoji">🍽️</span>
+                <span>Utilidades</span>
+            </button>
+
+            <button class="categoria-card" onclick="filtrar('Acessórios')">
+                <span class="emoji">🎒</span>
+                <span>Acessórios</span>
+            </button>
+
+        </div>
+    </section>
+
+    <!-- VITRINE DE PRODUTOS E CARRINHO -->
+
+    <div class="layout-loja">
+
+        <section class="vitrine" id="produtos">
+
+            <div class="barra-vitrine">
+                <h2 id="titulo-produtos">Todos os produtos</h2>
+                <span class="resultados" id="resultados"></span>
+            </div>
+
+            <div class="produtos" id="product-list"></div>
+
+        </section>
+
+        <aside class="painel-carrinho" id="carrinho">
+
+            <h2 class="titulo-carrinho">
+                🛒 Meu carrinho
+            </h2>
+
+            <div id="cart-items">
+                <p class="carrinho-vazio">
+                    Seu carrinho está vazio.
+                    Adicione produtos para começar!
+                </p>
+            </div>
+
+            <div class="resumo-carrinho">
+
+    <div class="linha-total">
+        <span>Quantidade de itens</span>
+        <strong id="quantidade-itens">0</strong>
+    </div>
+
+    <div class="linha-total">
+        <span>Subtotal dos produtos</span>
+        <strong>R$ <span id="total-produtos">0,00</span></strong>
+    </div>
+
+    <div class="linha-total">
+        <span>Taxa de entrega</span>
+        <strong class="valor-entrega">
+            R$ <span id="valor-entrega">0,00</span>
+        </strong>
+    </div>
+
+    <div class="linha-total final">
+        <span>Total do pedido</span>
+        <span>R$ <span id="total">0,00</span></span>
+    </div>
+
+    <div class="forma-recebimento">
+
+        <h3>Como deseja receber?</h3>
+
+        <div class="campo-pedido">
+            <label for="forma-recebimento">Forma de recebimento</label>
+
+            <select id="forma-recebimento" required>
+                <option value="">Selecione uma opção</option>
+                <option value="retirada">Retirar na loja — grátis</option>
+                <option value="entrega">Receber em casa — R$ 10,00</option>
+            </select>
+        </div>
+
+        <div class="campo-pedido">
+            <label for="cliente-nome">Seu nome</label>
+            <input
+                type="text"
+                id="cliente-nome"
+                placeholder="Nome completo"
+                autocomplete="name"
+                maxlength="100"
+            >
+        </div>
+
+        <div class="campo-pedido">
+            <label for="cliente-telefone">Seu telefone</label>
+            <input
+                type="tel"
+                id="cliente-telefone"
+                placeholder="(11) 99999-9999"
+                autocomplete="tel"
+                maxlength="20"
+            >
+        </div>
+
+        <div id="dados-entrega" class="dados-entrega">
+
+            <div class="aviso-entrega">
+                A entrega tem uma taxa fixa de R$ 10,00 por pedido.
+                Confira o endereço antes de enviar.
+            </div>
+
+            <div class="campo-pedido">
+                <label for="endereco-rua">Rua ou avenida</label>
+                <input
+                    type="text"
+                    id="endereco-rua"
+                    placeholder="Nome da rua"
+                    autocomplete="street-address"
+                    maxlength="150"
+                >
+            </div>
+
+            <div class="campo-pedido">
+                <label for="endereco-numero">Número</label>
+                <input
+                    type="text"
+                    id="endereco-numero"
+                    placeholder="Número do imóvel"
+                    maxlength="20"
+                >
+            </div>
+
+            <div class="campo-pedido">
+                <label for="endereco-bairro">Bairro</label>
+                <input
+                    type="text"
+                    id="endereco-bairro"
+                    placeholder="Bairro"
+                    autocomplete="address-level3"
+                    maxlength="100"
+                >
+            </div>
+
+            <div class="campo-pedido">
+                <label for="endereco-complemento">
+                    Complemento (opcional)
+                </label>
+                <input
+                    type="text"
+                    id="endereco-complemento"
+                    placeholder="Apartamento, casa, referência..."
+                    maxlength="150"
+                >
+            </div>
+
+            <div class="campo-pedido">
+                <label for="endereco-observacao">
+                    Observações (opcional)
+                </label>
+                <textarea
+                    id="endereco-observacao"
+                    rows="2"
+                    placeholder="Alguma orientação para a entrega?"
+                    maxlength="300"
+                ></textarea>
+            </div>
+
+        </div>
+
+    </div>
+
+    <button class="botao-finalizar" id="checkout">
+        Enviar pedido pelo WhatsApp
+    </button>
+
+    <p class="aviso-carrinho">
+        Confira os itens e o total antes de enviar.
+        A loja confirmará a disponibilidade e combinará o pagamento
+        pelo WhatsApp nesta versão inicial.
+    </p>
+
+    </div>
+
+        </aside>
+
+    </div>
+
+    <!-- ENDEREÇO E MAPA -->
+
+    <section class="localizacao" id="localizacao">
+
+        <h2>📍 Venha nos visitar</h2>
+
+        <p>
+            <strong>JAPAMIX — Sua Loja de Variedades</strong><br>
+            R. Garcia de Orta, 224-256<br>
+            Parque Independência — São Paulo/SP
+        </p>
+
+        <iframe
+            class="mapa"
+            src="https://maps.google.com/maps?q=-23.684886,-46.790563&t=&z=17&ie=UTF8&iwloc=&output=embed"
+            loading="lazy"
+            title="Localização da loja JAPAMIX">
+        </iframe>
+
+        <a
+            href="https://www.google.com/maps?q=-23.684886,-46.790563"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="botao-mapa">
+            Abrir no Google Maps
+        </a>
+
+    </section>
+
+</main>
+
+<footer>
+    <h2>JAPAMIX</h2>
+    <p>Sua Loja de Variedades</p>
+    <p>Casa, escola, brinquedos, limpeza e muito mais.</p>
+    <p><strong>Horário de funcionamento</strong></p>
+    <p>Segunda a sábado, das 09:00 às 18:00.</p>
+    <p> Domingo Fechado </p>
+</footer>
+
+<script>
+"use strict";
+
+/* CONFIGURAÇÕES DA LOJA */
+
+const loja = {
+    nome: "JAPAMIX",
+    whatsapp: "5511996092563"
+};
+
+/*
+  CADASTRE OS PRODUTOS NESTA LISTA.
+
+  Cada produto precisa de:
+  id, nome, preco, categoria e imagem.
+
+  As imagens podem ser endereços da internet ou caminhos locais,
+  por exemplo: "Imagens/caneca.jpg".
+*/
+
+const produtos = [
+    {
+        id: 1,
+        nome: "Caneca Plástica",
+        preco: 1.00,
+        categoria: "Casa",
+        imagem: "https://placehold.co/400x300/f4f4f4/c90000?text=Caneca"
+    },
+    {
+        id: 2,
+        nome: "Escova de Dentes",
+        preco: 1.00,
+        categoria: "Higiene",
+        imagem: "https://placehold.co/400x300/f4f4f4/c90000?text=Escova"
+    },
+    {
+        id: 3,
+        nome: "Sabonete",
+        preco: 1.00,
+        categoria: "Higiene",
+        imagem: "https://placehold.co/400x300/f4f4f4/c90000?text=Sabonete"
+    },
+    {
+        id: 4,
+        nome: "Bola de Plástico",
+        preco: 1.00,
+        categoria: "Brinquedos",
+        imagem: "https://placehold.co/400x300/f4f4f4/c90000?text=Bola"
+    },
+    {
+        id: 5,
+        nome: "Caneta",
+        preco: 14.50,
+        categoria: "Papelaria",
+        imagem: "imagens/CANETA.jpg"
+    },
+    {
+        id: 6,
+        nome: "Pano de Limpeza",
+        preco: 1.00,
+        categoria: "Limpeza",
+        imagem: "https://placehold.co/400x300/f4f4f4/c90000?text=Pano"
+    },
+    {
+        id: 7,
+        nome: "Colher de Plástico",
+        preco: 1.00,
+        categoria: "Utilidades",
+        imagem: "https://placehold.co/400x300/f4f4f4/c90000?text=Colher"
+    },
+    {
+        id: 8,
+        nome: "Caneta Esferográfica Puff",
+        preco: 11.50,
+        categoria: "Papelaria",
+        imagem: "imagens/caneta_2.png"
+    },
+    {
+        id: 9,
+        nome: "Carrinho de Brinquedo",
+        preco: 1.00,
+        categoria: "Brinquedos",
+        imagem: "https://placehold.co/400x300/f4f4f4/c90000?text=Carrinho"
+    },
+    {
+        id: 10,
+        nome: "Pote Plástico",
+        preco: 1.00,
+        categoria: "Casa",
+        imagem: "https://placehold.co/400x300/f4f4f4/c90000?text=Pote"
+    },
+    {
+        id: 11,
+        nome: "Esponja de Limpeza",
+        preco: 1.00,
+        categoria: "Limpeza",
+        imagem: "https://placehold.co/400x300/f4f4f4/c90000?text=Esponja"
+    },
+    {
+        id: 12,
+        nome: "Bolsa Pequena",
+        preco: 1.00,
+        categoria: "Acessórios",
+        imagem: "https://placehold.co/400x300/f4f4f4/c90000?text=Bolsa"
+    }
+];
+
+/* ESTADO DA LOJA */
+
+const carrinho = {};
+let categoriaAtual = "Todas";
+let buscaAtual = "";
+
+const elementoBusca = document.getElementById("search");
+const listaProdutos = document.getElementById("product-list");
+
+function dinheiro(valor) {
+    return valor.toLocaleString("pt-BR", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
+}
+
+/* FILTRO DE CATEGORIAS */
+
+function filtrar(categoria) {
+    categoriaAtual = categoria;
+
+    document.querySelectorAll("#menu-categorias button")
+        .forEach(botao => {
+            botao.classList.toggle(
+                "ativo",
+                botao.textContent.trim() ===
+                (categoria === "Todas"
+                    ? "Todas as categorias"
+                    : categoria)
+            );
+        });
+
+    document.querySelectorAll(".categoria-card")
+        .forEach(botao => {
+            botao.classList.toggle(
+                "selecionada",
+                botao.textContent.trim() === categoria
+            );
+        });
+
+    const titulos = {
+        "Todas": "Todos os produtos",
+        "Papelaria": "Papelaria",
+        "Brinquedos": "Brinquedos",
+        "Casa": "Produtos para casa",
+        "Limpeza": "Produtos de limpeza",
+        "Higiene": "Higiene pessoal",
+        "Utilidades": "Utilidades",
+        "Acessórios": "Acessórios"
+    };
+
+    document.getElementById("titulo-produtos").textContent =
+        titulos[categoria] || categoria;
+
+    renderProdutos();
+
+    document.getElementById("produtos").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
+
+/* PESQUISA E EXIBIÇÃO DOS PRODUTOS */
+
+function renderProdutos() {
+    buscaAtual = elementoBusca.value.trim().toLocaleLowerCase("pt-BR");
+
+    const filtrados = produtos.filter(produto => {
+        const correspondeCategoria =
+            categoriaAtual === "Todas" ||
+            produto.categoria === categoriaAtual;
+
+        const texto = (
+            produto.nome + " " + produto.categoria
+        ).toLocaleLowerCase("pt-BR");
+
+        return correspondeCategoria && texto.includes(buscaAtual);
+    });
+
+    document.getElementById("resultados").textContent =
+        filtrados.length +
+        (filtrados.length === 1 ? " produto" : " produtos");
+
+    if (filtrados.length === 0) {
+        listaProdutos.innerHTML = `
+            <div class="sem-produtos">
+                <p>Não encontramos produtos para essa busca.</p>
+                <p style="margin-top:8px">
+                    Experimente outro nome ou escolha outra categoria.
+                </p>
+                <button
+                    class="botao-adicionar"
+                    style="margin-top:15px;max-width:220px"
+                    onclick="limparFiltros()">
+                    Ver todos os produtos
+                </button>
+            </div>
+        `;
+        return;
+    }
+
+    listaProdutos.innerHTML = filtrados.map(produto => `
+        <article class="produto">
+            <img
+                src="${escaparHTML(produto.imagem)}"
+                alt="${escaparHTML(produto.nome)}"
+                loading="lazy"
+                onerror="this.onerror=null;this.src='https://placehold.co/400x300/f4f4f4/c90000?text=JAPAMIX'"
+            >
+
+            <div class="produto-info">
+                <span class="categoria-produto">
+                    ${escaparHTML(produto.categoria)}
+                </span>
+
+                <h3>${escaparHTML(produto.nome)}</h3>
+
+                <div class="preco">R$ ${dinheiro(produto.preco)}</div>
+
+                <button
+                    class="botao-adicionar"
+                    onclick="addCarrinho(${produto.id})">
+                    + Adicionar ao carrinho
+                </button>
+            </div>
+        </article>
+    `).join("");
+}
+
+function limparFiltros() {
+    elementoBusca.value = "";
+    categoriaAtual = "Todas";
+    filtrar("Todas");
+}
+
+/* CARRINHO */
+
+function addCarrinho(id) {
+    const produto = produtos.find(p => p.id === id);
+
+    if (!produto) return;
+
+    carrinho[id] = (carrinho[id] || 0) + 1;
+
+    renderCarrinho();
+}
+
+function alterarQuantidade(id, variacao) {
+    if (!carrinho[id]) return;
+
+    carrinho[id] += variacao;
+
+    if (carrinho[id] <= 0) {
+        delete carrinho[id];
+    }
+
+    renderCarrinho();
+}
+
+function removerProduto(id) {
+    delete carrinho[id];
+    renderCarrinho();
+}
+
+function renderCarrinho() {
+    const itens = Object.entries(carrinho);
+
+    let subtotalProdutos = 0;
+    let quantidadeTotal = 0;
+
+    const html = itens.map(([id, quantidade]) => {
+        const produto = produtos.find(p => p.id === Number(id));
+
+        if (!produto) return "";
+
+        const subtotal = produto.preco * quantidade;
+
+        subtotalProdutos += subtotal;
+        quantidadeTotal += quantidade;
+
+        return `
+            <div class="item-carrinho">
+                <strong>${escaparHTML(produto.nome)}</strong>
+
+                <div class="item-detalhes">
+                    <div class="controles-qtd">
+                        <button
+                            onclick="alterarQuantidade(${produto.id},-1)"
+                            aria-label="Diminuir quantidade">−</button>
+
+                        <span>${quantidade}</span>
+
+                        <button
+                            onclick="alterarQuantidade(${produto.id},1)"
+                            aria-label="Aumentar quantidade">+</button>
+                    </div>
+
+                    <span>R$ ${dinheiro(subtotal)}</span>
+                </div>
+
+                <button
+                    class="remover"
+                    onclick="removerProduto(${produto.id})">
+                    Remover produto
+                </button>
+            </div>
+        `;
+    }).join("");
+
+    document.getElementById("cart-items").innerHTML = html || `
+        <p class="carrinho-vazio">
+            Seu carrinho está vazio.
+            Adicione produtos para começar!
+        </p>
+    `;
+
+    const formaRecebimento =
+        document.getElementById("forma-recebimento").value;
+
+    const taxa = formaRecebimento === "entrega" ? 10 : 0;
+    const totalPedido = subtotalProdutos + taxa;
+
+    document.getElementById("cart-count").textContent =
+        quantidadeTotal;
+
+    document.getElementById("quantidade-itens").textContent =
+        quantidadeTotal;
+
+    document.getElementById("total-produtos").textContent =
+        dinheiro(subtotalProdutos);
+
+    document.getElementById("valor-entrega").textContent =
+        dinheiro(taxa);
+
+    document.getElementById("total").textContent =
+        dinheiro(totalPedido);
+}
+
+/* FINALIZAR PEDIDO PELO WHATSAPP */
+
+function finalizarPedido() {
+    const itens = Object.entries(carrinho);
+
+    if (itens.length === 0) {
+        alert("Seu carrinho está vazio! Adicione algum produto primeiro.");
+        return;
+    }
+
+    const formaRecebimento =
+        document.getElementById("forma-recebimento").value;
+
+    if (!formaRecebimento) {
+        alert("Escolha se deseja retirar na loja ou receber em casa.");
+        document.getElementById("forma-recebimento").focus();
+        return;
+    }
+
+    const nome = document.getElementById("cliente-nome")
+        .value.trim();
+
+    const telefoneCliente = document.getElementById("cliente-telefone")
+        .value.trim();
+
+    if (!nome || !telefoneCliente) {
+        alert("Informe seu nome e telefone para continuar.");
+        return;
+    }
+
+    let endereco = {};
+
+    if (formaRecebimento === "entrega") {
+        endereco = {
+            rua: document.getElementById("endereco-rua").value.trim(),
+            numero: document.getElementById("endereco-numero").value.trim(),
+            bairro: document.getElementById("endereco-bairro").value.trim(),
+            complemento: document.getElementById("endereco-complemento").value.trim(),
+            observacao: document.getElementById("endereco-observacao").value.trim()
+        };
+
+        if (!endereco.rua || !endereco.numero || !endereco.bairro) {
+            alert("Para entregar, informe a rua, o número e o bairro.");
+            return;
+        }
+    }
+
+    let subtotalProdutos = 0;
+
+    const linhas = [
+        `Olá, ${loja.nome}! Gostaria de fazer um pedido.`,
+        "",
+        `Nome: ${nome}`,
+        `Telefone: ${telefoneCliente}`,
+        ""
+    ];
+
+    itens.forEach(([id, quantidade]) => {
+        const produto = produtos.find(p => p.id === Number(id));
+
+        if (!produto) return;
+
+        const subtotal = produto.preco * quantidade;
+        subtotalProdutos += subtotal;
+
+        linhas.push(
+            `${produto.nome} | Quantidade: ${quantidade} | Subtotal: R$ ${dinheiro(subtotal)}`
+        );
+    });
+
+    const taxaEntrega = formaRecebimento === "entrega" ? 10 : 0;
+    const totalPedido = subtotalProdutos + taxaEntrega;
+
+    linhas.push("");
+    linhas.push(`SUBTOTAL DOS PRODUTOS: R$ ${dinheiro(subtotalProdutos)}`);
+
+    if (formaRecebimento === "entrega") {
+        linhas.push("FORMA DE RECEBIMENTO: Entrega");
+        linhas.push(`TAXA DE ENTREGA: R$ ${dinheiro(taxaEntrega)}`);
+        linhas.push("");
+        linhas.push("ENDEREÇO PARA ENTREGA:");
+        linhas.push(`Rua/avenida: ${endereco.rua}`);
+        linhas.push(`Número: ${endereco.numero}`);
+        linhas.push(`Bairro: ${endereco.bairro}`);
+
+        if (endereco.complemento) {
+            linhas.push(`Complemento: ${endereco.complemento}`);
+        }
+
+        if (endereco.observacao) {
+            linhas.push(`Observações: ${endereco.observacao}`);
+        }
+    } else {
+        linhas.push("FORMA DE RECEBIMENTO: Retirada na loja");
+        linhas.push("TAXA DE ENTREGA: R$ 0,00");
+    }
+
+    linhas.push("");
+    linhas.push(`TOTAL DO PEDIDO: R$ ${dinheiro(totalPedido)}`);
+    linhas.push("");
+    linhas.push("Gostaria de confirmar a disponibilidade e as opções de pagamento.");
+    linhas.push("");
+    linhas.push("Obrigado!");
+
+    const telefone = loja.whatsapp.replace(/\D/g, "");
+
+    if (!telefone) {
+        alert("Configure o número de WhatsApp da loja no código.");
+        return;
+    }
+
+    const mensagem = encodeURIComponent(linhas.join("\n"));
+    const url = `https://wa.me/${telefone}?text=${mensagem}`;
+
+    window.open(url, "_blank", "noopener,noreferrer");
+}
+
+/* PROTEÇÃO BÁSICA DE TEXTO EXIBIDO NO HTML */
+
+function escaparHTML(valor) {
+    return String(valor).replace(/[&<>"']/g, caractere => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+    })[caractere]);
+}
+
+/* EVENTOS */
+
+document.getElementById("form-busca")
+    .addEventListener("submit", function(evento) {
+        evento.preventDefault();
+        renderProdutos();
+
+        document.getElementById("produtos").scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    });
+
+elementoBusca.addEventListener("input", renderProdutos);
+
+document.getElementById("checkout")
+    .addEventListener("click", finalizarPedido);
+
+/* OPÇÕES DE ENTREGA */
+
+document.getElementById("forma-recebimento")
+    .addEventListener("change", function() {
+        const dadosEntrega = document.getElementById("dados-entrega");
+
+        dadosEntrega.classList.toggle(
+            "visivel",
+            this.value === "entrega"
+        );
+
+        renderCarrinho();
+    });
+
+/* INICIALIZAÇÃO */
+
+renderProdutos();
+renderCarrinho();
+</script>
+
+</body>
+</html>
